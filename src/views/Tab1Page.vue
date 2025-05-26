@@ -110,12 +110,48 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Hace que el contenido de la tabla no se desborde */
+ion-grid {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Celdas: corta texto largo con puntos suspensivos */
+ion-col {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Encabezados también cortan el texto */
+.header-row ion-col {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* El badge solo ocupa el espacio necesario */
+ion-badge {
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+/* En pantallas pequeñas, evita que las columnas colapsen */
 @media (max-width: 767px) {
-  .data-row ion-col:nth-child(1)::before {
-    content: "Clave: ";
-    font-weight: bold;
-    color: #4a5568;
+  ion-row {
+    flex-wrap: nowrap;
   }
+
+  ion-col {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
+
   .data-row ion-col:nth-child(2)::before {
     content: "Estado: ";
     font-weight: bold;
@@ -130,7 +166,6 @@ onMounted(() => {
   .data-row ion-col::before {
     margin-right: 5px;
   }
-}
 
 /* ========== Header ========== */
 ion-header ion-toolbar {
