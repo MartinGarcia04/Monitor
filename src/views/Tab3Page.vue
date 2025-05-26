@@ -319,23 +319,63 @@ const agregarClaves = async () => {
   font-weight: 500;
 }
 
-/* ========== Responsive ========== */
-@media (min-width: 768px) {
+/* ========== Responsive Mejorado ========== */
+@media (max-width: 767px) {
   .form-container {
-    padding: 32px;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 16px auto;
+    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.06);
   }
-  
+
+  .custom-button {
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  .button-text {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+
+  .button-icon {
+    font-size: 18px;
+  }
+
   .custom-header ion-title {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
-  
-  .label-spacing {
-    font-size: 16px;
+
+  .clean-input {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 6px;
   }
-  
-  .custom-input {
-    padding: 16px 18px;
-    font-size: 16px;
+
+  .clean-label {
+    font-size: 14px;
   }
 }
+
+@media (max-width: 479px) {
+  .form-container {
+    padding: 12px;
+  }
+
+  .custom-header ion-title {
+    font-size: 1rem;
+  }
+
+  .custom-button {
+    font-size: 13px;
+  }
+
+  .custom-content {
+    --padding-start: 12px;
+    --padding-end: 12px;
+  }
+}
+
 </style>
