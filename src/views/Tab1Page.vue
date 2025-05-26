@@ -110,6 +110,28 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@media (max-width: 767px) {
+  .data-row ion-col:nth-child(1)::before {
+    content: "Clave: ";
+    font-weight: bold;
+    color: #4a5568;
+  }
+  .data-row ion-col:nth-child(2)::before {
+    content: "Estado: ";
+    font-weight: bold;
+    color: #4a5568;
+  }
+  .data-row ion-col:nth-child(3)::before {
+    content: "Usuario: ";
+    font-weight: bold;
+    color: #4a5568;
+  }
+
+  .data-row ion-col::before {
+    margin-right: 5px;
+  }
+}
+
 /* ========== Header ========== */
 ion-header ion-toolbar {
   --background: #ffffff; /* Fondo blanco */
