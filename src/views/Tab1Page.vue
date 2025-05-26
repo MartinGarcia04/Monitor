@@ -115,6 +115,7 @@ onMounted(() => {
 ion-grid {
   overflow-x: auto;
   width: 100%;
+  display: block;
 }
 
 /* Celdas: corta texto largo con puntos suspensivos */
@@ -122,16 +123,26 @@ ion-col {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  color: #2d3748;
+  background-color: #ffffff;
 }
 
 /* Encabezados también cortan el texto */
 .header-row ion-col {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 600;
+  background-color: #ebf4ff;
+  color: #1a56db;
+  border-bottom: 2px solid #c3dafe;
 }
 
-/* El badge solo ocupa el espacio necesario */
+/* Badges */
 ion-badge {
   width: fit-content;
   max-width: 100%;
@@ -139,95 +150,15 @@ ion-badge {
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
-}
-
-/* En pantallas pequeñas, evita que las columnas colapsen */
-@media (max-width: 767px) {
-  ion-row {
-    flex-wrap: nowrap;
-  }
-
-  ion-col {
-    font-size: 13px;
-    padding: 8px;
-  }
-}
-
-  .data-row ion-col:nth-child(2)::before {
-    
-    font-weight: bold;
-    color: #4a5568;
-  }
-  .data-row ion-col:nth-child(3)::before {
-    
-    font-weight: bold;
-    color: #4a5568;
-  }
-
-  .data-row ion-col::before {
-    margin-right: 5px;
-  }
-
-/* ========== Header ========== */
-ion-header ion-toolbar {
-  --background: #ffffff; /* Fondo blanco */
-  --color: #1a73e8; /* Texto azul */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  border-bottom: 1px solid #e0e0e0; /* Borde sutil */
-}
-
-ion-title {
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-/* ========== Fondo del contenido ========== */
-ion-content {
-  --background: #f8fafc; /* Fondo muy claro azulado */
-}
-
-/* ========== Tabla ========== */
-ion-col {
-  border: 1px solid #e2e8f0; /* Borde azul muy claro */
-  padding: 10px;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  font-size: 14px;
-  color: #2d3748; /* Texto azul oscuro */
-  background-color: #ffffff; /* Fondo blanco para celdas */
-}
-
-/* Estilo para la primera fila (encabezados) */
-ion-row:first-child ion-col {
-  background-color: #ebf4ff; /* Azul muy claro */
-  color: #1a56db; /* Azul más intenso */
-  font-weight: 600;
-  border-bottom: 2px solid #c3dafe; /* Borde azul */
-}
-
-ion-row {
-  border-collapse: collapse;
-}
-
-/* Efecto hover para filas */
-ion-row:hover ion-col {
-  background-color: #f0f7ff; /* Azul muy claro al pasar el mouse */
-}
-
-/* ========== Badges ========== */
-ion-badge {
   text-transform: capitalize;
   font-size: 13px;
   font-weight: 500;
   padding: 6px 12px;
   border-radius: 12px;
-  background-color: #e1effe; /* Fondo azul claro */
-  color: #1a56db; /* Texto azul oscuro */
+  background-color: #e1effe;
+  color: #1a56db;
 }
 
-/* Variantes de badges para diferentes estados */
 ion-badge.success {
   background-color: #e6fffa;
   color: #065f46;
@@ -242,5 +173,56 @@ ion-badge.danger {
   background-color: #fee2e2;
   color: #b91c1c;
 }
+
+/* Hover en filas */
+ion-row:hover ion-col {
+  background-color: #f0f7ff;
+}
+
+/* Header */
+ion-header ion-toolbar {
+  --background: #ffffff;
+  --color: #1a73e8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+ion-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Fondo de contenido */
+ion-content {
+  --background: #f8fafc;
+}
+
+/* Responsive: mejora en móviles */
+@media (max-width: 767px) {
+  ion-grid {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  ion-row {
+    flex-wrap: nowrap;
+    min-width: 600px; /* ancho mínimo para que no se colapse */
+  }
+
+  ion-col {
+    font-size: 13px;
+    padding: 8px;
+    flex: 1 0 auto;
+  }
+}
+
+/* Pseudoelementos para columnas específicas */
+.data-row ion-col:nth-child(2)::before,
+.data-row ion-col:nth-child(3)::before {
+  font-weight: bold;
+  color: #4a5568;
+  margin-right: 5px;
+}
 </style>
+
 
