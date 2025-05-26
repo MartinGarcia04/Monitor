@@ -154,7 +154,7 @@ ion-badge {
 }
 
   .data-row ion-col:nth-child(2)::before {
-    content: "Estado: ";
+    
     font-weight: bold;
     color: #4a5568;
   }
