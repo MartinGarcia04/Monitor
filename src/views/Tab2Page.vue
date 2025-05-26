@@ -12,6 +12,9 @@
             <ion-label>
               <h2>{{ usuario || 'Usuario no definido' }}</h2>
               <p>{{ user.claves.length }} claves</p>
+              <span style="font-weight: normal; color: gray;">
+    Carrera: {{ user.carrera }}
+  </span>
             </ion-label>
             <ion-button slot="end" fill="clear" @click="toggleDropdown(usuario)">
               <ion-icon :icon="dropdownAbierto[usuario] ? chevronUpOutline : chevronDownOutline"></ion-icon>
@@ -40,6 +43,7 @@
 </template>
 
 <script setup>
+
 import {
   IonPage,
   IonHeader,
@@ -63,26 +67,36 @@ import { ref as vueRef, onMounted, computed, reactive } from 'vue';
 const listaClaves = vueRef([]);
 const dropdownAbierto = reactive({});
 
-// Agrupar claves por usuario
+// Agrupar claves por usuario y asociar la carrera
 const usuariosAgrupados = computed(() => {
   const agrupados = {};
   
   listaClaves.value.forEach(clave => {
     const usuario = clave.usuario || 'Sin usuario';
-    
+    const carrera = clave.carrera || 'Por definir';
+
     if (!agrupados[usuario]) {
-      agrupados[usuario] = { claves: [] };
+      agrupados[usuario] = {
+        claves: [],
+        carrera: carrera
+      };
       dropdownAbierto[usuario] = false;
     }
-    
+
+    // Solo actualiza carrera si aún no está definida
+    if (agrupados[usuario].carrera === 'Por definir' && carrera !== 'Por definir') {
+      agrupados[usuario].carrera = carrera;
+    }
+
     agrupados[usuario].claves.push({
       id: clave.id,
       timestamp: clave.timestamp || Date.now()
     });
   });
-  
+
   return agrupados;
 });
+
 
 // Manejar dropdown
 const toggleDropdown = (usuario) => {
@@ -136,19 +150,21 @@ const eliminarClave = (claveId ) => {
 onMounted(() => {
   const db = getDatabase();
   const clavesRef = ref(db, "claves/");
-  
+
   onValue(clavesRef, (snapshot) => {
     const nuevasClaves = [];
     snapshot.forEach((element) => {
       nuevasClaves.push({
         id: element.key,
         usuario: element.val().usuario || '',
+        carrera: element.val().carrera || 'Por definir',
         timestamp: element.val().timestamp || Date.now()
       });
     });
     listaClaves.value = nuevasClaves;
   });
 });
+
 </script>
 
 <style scoped>
