@@ -7,10 +7,3 @@ ion-col {
   color: #fff;
   text-align: center;
 }
-
-@media (max-width: 768px) {
-  .contenedor {
-    width: 100%;
-    padding: 10px;
-  }
-}
