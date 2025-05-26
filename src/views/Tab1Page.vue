@@ -33,7 +33,8 @@
               {{ item.status || 'Disponible' }}
             </ion-badge>
           </ion-col>
-          <ion-col size="4">{{ item.usuario || 'No asignado' }}</ion-col>
+          <ion-col size="4">{{ (item.usuario || 'No asignado').slice(0, 20) + '...' }}
+</ion-col>
         </ion-row>
         
         <!-- Mensaje cuando no hay datos -->
