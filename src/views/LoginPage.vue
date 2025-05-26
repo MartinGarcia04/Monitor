@@ -169,7 +169,9 @@ ion-item.custom-input ion-label.input-label {
   padding-bottom: 6px;
   font-size: 14px;
   color: #000000 !important;
+  display: block;
 }
+
 
 ion-item.custom-input ion-input.input-field {
   margin-top: 4px;
@@ -238,6 +240,20 @@ ion-item.custom-input ion-input.input-field {
 
   .login-button {
     height: 44px;
+  }
+
+  ion-item.custom-input ion-label.input-label {
+    margin-bottom: 6px; /* Aumenta el espacio entre label e input */
+    font-size: 15px;
+  }
+
+  ion-item.custom-input {
+    --inner-padding-top: 10px;
+    --inner-padding-bottom: 10px;
+  }
+
+  ion-item.custom-input ion-input.input-field {
+    margin-top: 0; /* Asegura que no se acerque demasiado */
   }
 }
 
