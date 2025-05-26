@@ -124,7 +124,7 @@ const login = async () => {
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
-  transform: translateY(50%); /* Ajuste fino de posición vertical */
+  margin-top: 60px;
 }
 
 .logo-section {
@@ -216,4 +216,29 @@ ion-item.custom-input ion-input.input-field {
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
+
+@media (max-width: 600px) {
+  .login-container {
+    transform: none; /* Elimina el empuje vertical */
+    padding: 20px 15px; /* Reduce padding lateral */
+    margin-top: 40px; /* Da un margen razonable superior */
+  }
+
+  .welcome-text {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .custom-input {
+    min-height: 60px;
+  }
+
+  .login-button {
+    height: 44px;
+  }
+}
+
 </style>

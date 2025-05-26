@@ -159,7 +159,7 @@ ion-badge {
     color: #4a5568;
   }
   .data-row ion-col:nth-child(3)::before {
-    content: "Usuario: ";
+    
     font-weight: bold;
     color: #4a5568;
   }
