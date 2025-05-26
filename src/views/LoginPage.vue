@@ -151,32 +151,38 @@ const login = async () => {
 
 .custom-input {
   --background: #f8f9fa;
+  --padding-start: 12px;
+  --inner-padding-start: 12px;
+  --inner-padding-end: 12px;
+  --inner-padding-top: 14px;
+  --inner-padding-bottom: 14px;
+  --highlight-color-focused: #3880ff;
   border-radius: 12px;
   margin-bottom: 20px;
-  --padding-start: 12px;
-  --inner-padding-end: 12px;
-  --highlight-color-focused: #3880ff;
   min-height: 70px;
+  display: flex;
   align-items: center;
 }
 
 .input-icon {
   color: #555555;
   margin-right: 10px;
+  font-size: 20px;
 }
 
 ion-item.custom-input ion-label.input-label {
-  padding-bottom: 6px;
   font-size: 14px;
   color: #000000 !important;
   display: block;
+  margin-bottom: 8px; /* Mejora separación del input */
 }
 
 
 ion-item.custom-input ion-input.input-field {
-  margin-top: 4px;
   font-size: 15px;
   color: #000000 !important;
+  --padding-top: 6px;
+  --padding-bottom: 6px;
 }
 
 ::placeholder {
@@ -221,9 +227,8 @@ ion-item.custom-input ion-input.input-field {
 
 @media (max-width: 600px) {
   .login-container {
-    transform: none; /* Elimina el empuje vertical */
-    padding: 20px 15px; /* Reduce padding lateral */
-    margin-top: 40px; /* Da un margen razonable superior */
+    padding: 20px 16px;
+    margin-top: 40px;
   }
 
   .welcome-text {
@@ -235,25 +240,24 @@ ion-item.custom-input ion-input.input-field {
   }
 
   .custom-input {
+    --inner-padding-top: 12px;
+    --inner-padding-bottom: 12px;
     min-height: 60px;
+  }
+
+  ion-item.custom-input ion-label.input-label {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  ion-item.custom-input ion-input.input-field {
+    font-size: 15px;
+    margin-top: 0;
   }
 
   .login-button {
     height: 44px;
-  }
-
-  ion-item.custom-input ion-label.input-label {
-    margin-bottom: 10px; /* Aumenta el espacio entre label e input */
     font-size: 15px;
-  }
-
-  ion-item.custom-input {
-    --inner-padding-top: 10px;
-    --inner-padding-bottom: 10px;
-  }
-
-  ion-item.custom-input ion-input.input-field {
-    margin-top: 0; /* Asegura que no se acerque demasiado */
   }
 }
 
