@@ -243,7 +243,7 @@ ion-item.custom-input ion-input.input-field {
   }
 
   ion-item.custom-input ion-label.input-label {
-    margin-bottom: 6px; /* Aumenta el espacio entre label e input */
+    margin-bottom: 10px; /* Aumenta el espacio entre label e input */
     font-size: 15px;
   }
 
